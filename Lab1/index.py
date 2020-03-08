@@ -23,7 +23,7 @@ class density:
 
     @staticmethod
     def uniform(x):
-        return 1/(2*math.sqrt(3)) if math.fabs(x) < math.sqrt(3) else 0
+        return 1/(2*math.sqrt(3)) if math.fabs(x) <= math.sqrt(3) else 0
 
 
 class distribution:
