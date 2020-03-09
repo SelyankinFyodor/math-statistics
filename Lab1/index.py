@@ -6,9 +6,7 @@ import seaborn
 def build_gist(exp, cap):
     x = exp['distribution'](capacity)
     x.sort()
-    d = []
-    for cord in x:
-        d.append(exp['density'](cord))
+    d = list(map(exp['density'], x))
     plot.plot(x, d, 'red')
     seaborn.distplot(x)
     plot.title("%s, capacity:%s" % (exp['distribution'].__name__, cap))
