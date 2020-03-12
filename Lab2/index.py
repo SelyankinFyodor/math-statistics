@@ -21,10 +21,9 @@ if __name__ == "__main__":
                 print(num_char.__name__ + "  cap: " + str(capacity))
                 data = []
                 for _ in range(1000):
-                    data.append(num_char(dist(capacity)))
+                    e = dist(capacity)
+                    e.sort()
+                    data.append(num_char(e))
                 print("%.6f" % nc.sample_mean(data))
                 print("%.6f" % nc.dispersion_exp(data))
                 print('==================================')
-
-
-
