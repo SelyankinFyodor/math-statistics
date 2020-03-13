@@ -16,5 +16,5 @@ python Lab2/index.py
 ```
 for 3 Laboratory
 ```
-python Lab2/index.py
+python Lab3/index.py
 ```
