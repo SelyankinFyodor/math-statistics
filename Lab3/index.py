@@ -22,5 +22,5 @@ if __name__ == "__main__":
     ]:
         show_box_plot(dist)
         print(dist.__name__)
-        print("%.6f" % get_prop_emission(dist, 20))
-        print("%.6f" % get_prop_emission(dist, 100))
+        print("%.2f" % get_prop_emission(dist, 20))
+        print("%.2f" % get_prop_emission(dist, 100))
