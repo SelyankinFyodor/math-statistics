@@ -39,7 +39,7 @@ class density:
 
     @staticmethod
     def poisson(k):
-        return (math.pow(10, k) / math.factorial(k)) * math.exp(-10)
+        return (math.pow(10, round(k)) / math.factorial(round(k))) * math.exp(-10)
 
     @staticmethod
     def uniform(x):
