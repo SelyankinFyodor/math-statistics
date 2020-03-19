@@ -18,3 +18,7 @@ for 3 Laboratory
 ```
 python Lab3/index.py
 ```
+for 4 Laboratory
+```
+python Lab4/index.py
+```
