@@ -4,8 +4,7 @@ import seaborn
 
 
 def build_gist(exp, cap):
-    x = exp['distribution'](capacity)
-    x.sort()
+    x = sorted(exp['distribution'](capacity))
     d = list(map(exp['density'], x))
     plot.plot(x, d, 'red')
     seaborn.distplot(x)

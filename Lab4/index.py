@@ -8,8 +8,7 @@ from scipy import stats
 
 def draw_cdf(e, cap, subplot):
     subplot.set_title(e['dist'].__name__ + ' capacity=' + str(cap))
-    samples = e['dist'](cap)
-    samples.sort()
+    samples = sorted(e['dist'](cap))
     res = stats.cumfreq(samples, numbins=cap, defaultreallimits=e['section'])
     x = min(e['section']) + np.linspace(0, res.binsize * res.cumcount.size, res.cumcount.size)
     subplot.bar(x, res.cumcount / cap, width=res.binsize)
@@ -23,12 +22,10 @@ def draw_kde(e, cap, subplot):
         k.set_bandwidth(k.factor*param)
         return k
     subplot.set_title(e['dist'].__name__ + ' capacity=' + str(cap))
-    sample = e['dist'](cap)
-    sample.sort()
+    sample = sorted(e['dist'](cap))
     x = np.linspace(min(e['section']), max(e['section']), 10000, endpoint=True)
-    subplot.plot(sample, kde(samples=sample, param=0.5)(sample), label="h = 0.5 * hn")
-    subplot.plot(sample, kde(samples=sample, param=1.0)(sample), label="h = hn")
-    subplot.plot(sample, kde(samples=sample, param=2.0)(sample), label="h = 2 * hn")
+    for p in [0.5, 1.0, 2.0]:
+        subplot.plot(sample, kde(samples=sample, param=p)(sample), label="h = %.1f * hn" % p)
     subplot.plot(x, list(map(e['dens'], x)), label="func")
     subplot.grid()
     subplot.legend()
@@ -44,12 +41,9 @@ if __name__ == "__main__":
         {'dist': d.normal, 'section': [-4, 4], 'dens': den.normal},
         {'dist': d.cauchy, 'section': [-4, 4], 'dens': den.cauchy}
     ]:
-        fig, axs = plt.subplots(1, 3, figsize=(16, 6))
-        capacity = [20, 60, 100]
-        for i in range(3):
-            draw_cdf(exp, capacity[i], axs[i])
-        plt.show()
-        fig, axs = plt.subplots(1, 3, figsize=(16, 6))
-        for i in range(3):
-            draw_kde(exp, capacity[i], axs[i])
-        plt.show()
+        for draw in [draw_cdf, draw_kde]:
+            fig, axs = plt.subplots(1, 3, figsize=(16, 6))
+            capacity = [20, 60, 100]
+            for i in range(3):
+                draw(exp, capacity[i], axs[i])
+            plt.show()

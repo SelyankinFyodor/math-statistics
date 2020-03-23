@@ -19,11 +19,7 @@ if __name__ == "__main__":
                 nc.truncated_mean
             ]:
                 print(num_char.__name__ + "  cap: " + str(capacity))
-                data = []
-                for _ in range(1000):
-                    e = dist(capacity)
-                    e.sort()
-                    data.append(num_char(e))
+                data = [num_char(sorted(dist(capacity))) for _ in range(1000)]
                 print("%.6f" % nc.sample_mean(data))
                 print("%.6f" % nc.dispersion_exp(data))
                 print('==================================')
