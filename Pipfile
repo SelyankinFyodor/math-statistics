@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+numpy = "==1.18.1"
+accessify = "==0.3.1"
+kiwisolver = "==1.1.0"
+matplotlib = "==3.2.0"
+pandas = "==1.0.1"
+pyparsing = "==2.4.6"
+python-dateutil = "==2.8.1"
+pytz = "==2019.3"
+scipy = "==1.4.1"
+seaborn = "==0.10.0"
+six = "==1.14.0"
+Cycler = "==0.10.0"
+
+[requires]
+python_version = "3.7"
