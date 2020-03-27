@@ -14,14 +14,15 @@ class sample_correlation_coefficients:
     @staticmethod
     def selective_quadrant(samples):
         n1, n2, n3, n4 = 0, 0, 0, 0
+        mx, my = nc.sample_mean(samples[0]), nc.sample_mean(samples[1])
         for i in range(len(samples[0])):
-            if samples[0][i] > 0 and samples[1][i] >= 0:
+            if samples[0][i] > mx and samples[1][i] >= my:
                 n1 += 1
-            elif samples[0][i] <= 0 < samples[1][i]:
+            elif samples[0][i] <= mx and samples[1][i] > my:
                 n2 += 1
-            elif samples[0][i] < 0 and samples[1][i] <= 0:
+            elif samples[0][i] < mx and samples[1][i] <= my:
                 n3 += 1
-            elif samples[1][i] < 0 <= samples[0][i]:
+            elif samples[0][i] >= mx and samples[1][i] < my:
                 n4 += 1
         return ((n1 + n3) - (n2 + n4)) / len(samples[0])
 
