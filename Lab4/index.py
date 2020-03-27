@@ -43,7 +43,6 @@ if __name__ == "__main__":
     ]:
         for draw in [draw_cdf, draw_kde]:
             fig, axs = plt.subplots(1, 3, figsize=(16, 6))
-            capacity = [20, 60, 100]
-            for i in range(3):
-                draw(exp, capacity[i], axs[i])
+            for capacity, plot in zip([20, 60, 100], axs):
+                draw(exp, capacity, plot)
             plt.show()
