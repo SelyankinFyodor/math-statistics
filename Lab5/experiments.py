@@ -41,5 +41,5 @@ def ellipse_test(capacity):
         w = 5*np.sqrt(vx*(np.cos(angle))**2 + cor*np.sqrt(vx)*np.sqrt(vy)*np.sin(2*angle) + vy*(np.sin(angle))**2)
         h = 5*np.sqrt(vx*(np.sin(angle))**2 - cor*np.sqrt(vx)*np.sqrt(vy)*np.sin(2*angle) + vy*(np.cos(angle))**2)
         ell = Ellipse(xy=(nc.sample_mean(dots[0]), nc.sample_mean(dots[1])), width=w, height=h, angle=np.rad2deg(angle))
-        draw_ellipse("normal distribution p  = %.1f" % cor, ell, dots, subplot)
+        draw_ellipse("normal distribution %s = %.1f" % (r'$\rho$', cor), ell, dots, subplot)
     plt.show()

@@ -8,5 +8,5 @@ if __name__ == "__main__":
         complex_dist_test,
         ellipse_test
     ]:
-        for cap in [60, 100]:
+        for cap in [20, 60, 100]:
             exp(cap)
