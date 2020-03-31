@@ -2,7 +2,8 @@
 
 install the necessary packages
 ```
-pip install -r r.txt
+pip install pipenv
+pipenv install Pipfile
 ```
 or
 ```
@@ -29,4 +30,8 @@ python Lab4/index.py
 for 5 Laboratory
 ```
 python Lab5/index.py
+```
+for 6 Laboratory
+```
+python Lab6/index.py
 ```
