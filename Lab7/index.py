@@ -6,24 +6,25 @@ from Lab2.num_char import numerical_characteristics as nc
 
 if __name__ == "__main__":
     n = 100
-    k = 6
+    k = 7
     delta = 0.5
     x_i = sorted(d.normal(n))
     m0 = nc.sample_mean(x_i)
     d = nc.dispersion_exp(x_i)
     print("%.2f %.2f" % (m0, d))
     d_i = [
-        [-np.inf, m0-delta*2],
-        [m0-delta*2, m0-delta*1],
-        [m0-delta*1, m0-delta*0],
-        [m0-delta*0, m0+delta*1],
-        [m0+delta*1, m0+delta*2],
-        [m0+delta*2, np.inf]
+        [-np.inf, m0-delta*2.5],
+        [m0-delta*2.5, m0-delta*1.5],
+        [m0-delta*1.5, m0-delta*0.5],
+        [m0-delta*0.5, m0+delta*0.5],
+        [m0+delta*0.5, m0+delta*1.5],
+        [m0+delta*1.5, m0+delta*2.5],
+        [m0+delta*2.5, np.inf]
     ]
     n_i = [0]*k
     for x in x_i:
         for i in range(k):
-            if d_i[i][0] < x < d_i[i][1]:
+            if d_i[i][0] < x <= d_i[i][1]:
                 n_i[i] += 1
     p_i = [integrate.quad(den.normal, i[0], i[1])[0] for i in d_i]
     npi = n*np.array(p_i)
