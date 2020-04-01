@@ -2,12 +2,7 @@
 
 install the necessary packages
 ```
-pip install pipenv
-pipenv install Pipfile
-```
-or
-```
-pipenv install Pipfile
+pip install Pipfile
 ```
 run script
 
@@ -44,4 +39,9 @@ python Lab6/index.py
 for 7 Laboratory
 ```
 python Lab7/index.py
+```
+
+for 8 Laboratory
+```
+python Lab8/index.py
 ```
