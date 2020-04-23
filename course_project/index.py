@@ -2,7 +2,6 @@ import numpy as np
 import os
 import sys
 import json
-from course_project.sawtooth_detection import getRoi
 from course_project.sawtooth_frequency_computation import get_valid_freq
 from course_project.presentation import plot
 import pandas as pd
@@ -20,27 +19,9 @@ except ImportError as e:
     sys.exit(1)
 
 
-def main1():
-    """
-    sawtooth detection
-    """
-
-    with open("VALID_DATA.json") as json_file:
-        valid_data = json.load(json_file)
-
-    out_sawtooth_detection = os.path.join(current_dir, "output", "sawtooth_detection")
-    for sht_file in valid_data:
-        for s in valid_data[sht_file]["signals"]:
-            sht_reader = pyglobus.util.ShtReader(os.path.join(sht_dir, "%s.sht" % sht_file))
-            signal_from_sht = sht_reader.get_signal(int(s))
-            data = np.array((signal_from_sht.get_data_x(), signal_from_sht.get_data_y()))
-            x, y, start, end = getRoi(data)
-            print("%i, %i" % (start, end))
-
-
 def comparing_in_row():
     """
-    sawtooth frequency compering
+    horizontal similarity research
     """
 
     with open("VALID_DATA.json") as json_file:
@@ -74,6 +55,10 @@ def comparing_in_row():
 
 
 def comparing_in_column():
+    """
+    vertical similarity research
+    :return:png's in output/joint_frequency_graph
+    """
     with open("VALID_DATA.json") as json_file:
         data = json.load(json_file)
     res_sign = 20
