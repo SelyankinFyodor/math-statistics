@@ -3,7 +3,6 @@ from scipy import integrate
 import matplotlib.pyplot as plt
 from Lab1.distribution import distribution as dist, density as den
 from Lab2.num_char import numerical_characteristics as nc
-import seaborn
 
 
 def build_gist(d_list, n_list, p_list):
