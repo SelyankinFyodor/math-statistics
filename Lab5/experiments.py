@@ -37,7 +37,7 @@ def ellipse_test(capacity):
         dots = np.random.multivariate_normal((0, 0), [[1, cor], [cor, 1]], capacity).T
         vx = nc.dispersion_exp(dots[0])
         vy = nc.dispersion_exp(dots[1])
-        angle = np.arctan(np.sqrt(vx)*np.sqrt(vy)*cor/(vx-vy))/2
+        angle = np.arctan(2*np.sqrt(vx)*np.sqrt(vy)*cor/(vx-vy))/2
         w = 5*np.sqrt(vx*(np.cos(angle))**2 + cor*np.sqrt(vx)*np.sqrt(vy)*np.sin(2*angle) + vy*(np.sin(angle))**2)
         h = 5*np.sqrt(vx*(np.sin(angle))**2 - cor*np.sqrt(vx)*np.sqrt(vy)*np.sin(2*angle) + vy*(np.cos(angle))**2)
         ell = Ellipse(xy=(nc.sample_mean(dots[0]), nc.sample_mean(dots[1])), width=w, height=h, angle=np.rad2deg(angle))
